@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>welcome to Taiwan Fruit Shop</title>
+
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            /* border-radius: 50%; */
+            background-color: pink;
+            text-align: center;
+            float: left;
+            margin: 12px;
+            /* display: none; */
+        }
+    </style>
+
+    <script>
+        $(document).ready(function(){
+            $('#btnPost').click(function(){
+                $.post('0511jQ.html',function(data,status){
+                    $('#divPost').html(data+'</br>'+status);
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    
+    <div id="divPost">
+    </div>
+    <button id="btnPost">POST</button>
+
+    
+</body>
+</html>

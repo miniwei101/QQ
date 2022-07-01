@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生命週期, LifeCycle Hook</title>
+</head>
+<body>
+    
+    <div id="demo">   
+        <h1>{{title}}</h1>
+        <hr>
+        <button @click="show(false)">SHOW </button>   
+        <hr>
+        <myfruit v-if="isShow" />
+            <img src="fruit/apple.jpg">
+        </myfruit>
+        <p>{{isShow}}</p>
+    </div>
+
+     <!-- cdn -->
+     <script src="https://unpkg.com/vue@3"></script>
+     <script>
+         //宣告應用程式物件變數
+        let fruit= Vue.createApp({
+            data:function(){
+                return {
+                     title:'Welcome to Taiwan Fruit Stand',                     
+                     isShow:false,                     
+                };
+            },
+
+            methods:{
+               show(x){
+                    this.isShow=x;                   
+               },
+            },
+            update(){
+                   console.log('update');
+               }
+            
+        });
+
+        fruit.component('myfruit',{
+                template:`
+                    <div class='mydiv'></div>
+                `,
+
+                created(){
+                        console.log('created')
+                },
+
+                mounted(){
+                    console.log('mounted')
+                },
+
+                unmounted() {
+                    console.log('unmouted')     
+                },
+
+       });
+
+
+        fruit.mount('#demo');
+
+        </script>
+
+
+
+</body>
+</html>

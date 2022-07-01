@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>welcome to Taiwan Fruit Shop</title>
+
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            /* border-radius: 50%; */
+            background-color: pink;
+            text-align: center;
+            float: left;
+            margin: 12px;
+            /* display: none; */
+        }
+    </style>
+
+    <script>
+        $(document).ready(function(){
+            // $('#divLoad').load("/0516Examples/myfile.txt",function(){
+            //     alert( "Load was performed." );
+
+            // });
+            $('#btnLoad').click(function(){
+                $('#divLoad').load("/0516Examples/myfile.txt");
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="divLoad">
+    </div>
+    <button id="btnLoad">LOAD</button>
+
+    
+</body>
+</html>

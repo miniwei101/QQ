@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    
+</head>
+<body>
+    <div id="demo"></div>
+    <div id="demo2"></div>
+    <div id="demo3"></div>
+    <div id="demo4"></div>
+
+    <script>
+        const d1=document.getElementById('demo');
+        const d2=document.getElementById('demo2');
+        const d3=document.getElementById('demo3');
+        const d4=document.getElementById('demo4');
+
+    //一般函數(具名函數)
+    function test(){}
+    //匿名函數
+    var fruit=function(r){
+        favorite=['火龍果','水蜜桃','龍眼','西瓜','香蕉','釋迦','鳳梨','水梨'];
+        return favorite[r];
+    }
+    var r=Math.floor(Math.random()*5);
+    d1.innerHTML="今天要吃的水果是....."+fruit(r);
+    //即時匿名
+    (function(r){
+        favorite=['西瓜','香蕉','釋迦','鳳梨','水梨','火龍果','水蜜桃','龍眼'];
+        d2.innerHTML="那明天就吃......."+favorite[r];
+    })(r);
+
+    (function(){
+        //favorite=['火龍果','水蜜桃','龍眼','西瓜','香蕉','釋迦','鳳梨','水梨'];
+        d3.innerHTML="555555555555"+favorite;
+    })();//！！！不能省略（）
+
+    //一般函數 空參數 無傳回值
+    var str='';
+    function myFruit(){
+        str+='000一般函數 空參數 無傳回值<br>';
+        d4.innerHTML=str;
+    }
+    myFruit();
+    //箭頭函數(空參數 無傳回值)
+    var myFruit2=()=>{
+        str+='箭頭函數(空參數 無傳回值)<br>';
+        d4.innerHTML+=str;
+    };
+    myFruit2();
+
+    //一般函數 無參數 有傳回值
+    function yourFruit(){
+        return str+='一般函數 有傳回值<br>';
+    };
+    d4.innerHTML=yourFruit();
+    //箭頭函數 無參數 有傳回值
+    var yourFruit2=()=>str+='xxxxxxxxxxx<br>';
+    d4.innerHTML=yourFruit2();
+    // yourFruit2();
+
+    //箭頭函數 有參數 有傳回值
+    var hisFruit=(price,qty)=>str+=""+(price*qty)+"<br>";
+    </script>
+</body>
+</html>

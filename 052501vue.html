@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Custom Component</component></title>
+    <style>
+       
+       input{
+           display: block;
+       }
+        
+    </style>
+</head>
+<body>
+    
+    <div id="demo">
+        <h1>{{title}}</h1>
+        <hr>       
+    
+        <my-form />
+
+    </div>
+    
+    <!-- cdn -->
+    <script src="https://unpkg.com/vue@3"></script>
+    <script>
+        //宣告應用程式物件變數
+       let fruit= Vue.createApp({
+           data:function(){
+               return {
+                    title:'Welcome to Taiwan Fruit Stand',                  
+               };
+           }           
+           
+       });
+
+       fruit.component('my-form',{
+           template:`
+            <div>
+                <!-- 有prevent就不會刷新頁面-->
+                <form @submit.prevent='handleLogin'>
+                 <h2>   {{subtitle}}</h2>
+                <your-form type='email' placeholder='Email' v-model='Email'v-bind:label="labelEmail" :modelValue="Email"/> <!-- v-bind:可以縮寫成:-->
+                <your-form type='password' placeholder='password' v-model='' v-bind:label="labelPassword":modelValue="password"/>
+                <button>LOGIN</button>    
+                </form>
+            </div>
+           `,
+           component:['your-form'],
+           data(){
+               return{
+               subtitle:'會員登入系統',
+               Email:'',
+               password:'111111',
+               labelEmail:'請輸入Email',
+               labelPassword:'請輸入密碼'
+            }
+           },
+           methods:{
+               handleLogin(){
+                   alert('LOGIN OK!!');
+                   console.log(this.Email,this.password);
+               }
+           }
+       })
+       fruit.component('your-form',{
+           template:`
+           <label>
+            {{label}}
+           <input type="text" v-model="inputValue"/>
+           </label>
+           `,
+           props:['label','modelValue'],
+           computed:{
+               inputValue:{
+                   get(){
+                    return this.modelValue;
+                   },
+                   set(value){
+                     this.$emit('update:modelValue',value); //<!--子元件的內容傳遞到父元件-->
+                     console.log(value);
+                   }
+               }
+           }
+
+       })
+
+      fruit.mount('#demo');
+</script>
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Event,method</title>
+    <style>
+        input{
+            display: block;
+        }
+
+        .mydiv{
+            width: 30%;
+            float: left;
+        }
+
+        .mydiv img{
+            border-radius: 50%;
+            margin: 15px;
+            width: 50%;
+        }
+
+        
+    </style>
+</head>
+<body>
+    
+    <div id="demo">
+        <h1>{{title}}</h1>
+        <hr>
+
+        <!-- 監聽鍵盤 -->
+        <input v-model='name' placeholder="Enter Name" @keyup.enter='checkout'/>
+        <input v-model='price' placeholder="Enter Price" @keyup.enter='checkout'/>
+        <input v-model='qty' placeholder="Enter Qty" @keyup.enter='checkout'/>
+        <div id="name">{{name}}</div>
+        <div id="price">{{price}}</div>
+        <div id="qty">{{qty}}</div>
+        <div id="result">{{"Total:" + price *qty  +'元'}}</div>
+
+        <!-- 按右鍵 -->
+        <!-- <button @click.right="checkout">CHECKOUT</button> -->
+
+        <!-- 防止按鈕停止功能 -->
+        <button @click.prevent.stop="checkout">CHECKOUT</button>
+
+        <hr>
+        <!-- <button v-on:click="isShow=true,isShow2=false">SHOW</button>
+        <button v-on:click="isShow=false,isShow2=true">SHOW2</button>
+        <button v-on:click="isShow=false,isShow2=false">SHOW3</button> -->
+
+        <!-- v-on:click 與 @click 同 -->
+        <button @click="show(true,false)">SHOW</button>
+        <button @click="show(false,true)">SHOW2</button>
+        <button @click="show(false,false)">SHOW3</button>
+
+        <hr style="clear: both">
+        <div class="mydiv" v-if="isShow">
+            <img src="images/fruit2/8.jpg">
+            <p>{{isShow + ',' + isShow2 }}</p>
+        </div>
+
+        <div class="mydiv" v-else-if="isShow2">
+            <img src="images/fruit2/7.jpg">
+            <p>{{isShow + ',' + isShow2 }}</p>
+        </div>
+
+        <div class="mydiv" v-else>
+            <img src="images/fruit2/6.jpg">
+            <p>{{isShow + ',' + isShow2 }}</p>
+        </div>
+
+        <hr style="clear: both">
+        <!-- <img src="images/off.gif" v-if="isHide" v-on:click="isHide=!isHide,isHide2=!isHide2">
+        <img src="images/on.gif"  v-if="isHide2" v-on:click="isHide2=!isHide2,isHide=!isHide"> -->
+
+        
+        <!-- <img src="images/off.gif" v-if="isHide" @click="isHide=!isHide">
+        <img src="images/on.gif"  v-if="!isHide" @click="isHide=!isHide"> -->
+    
+        <img src="images/off.gif" v-if="isHide" @click="hide">
+        <img src="images/on.gif"  v-if="isHide2" @click="hide">
+    
+
+    </div>
+    
+    <!-- cdn -->
+    <script src="https://unpkg.com/vue@3"></script>
+    <script>
+        //宣告應用程式物件變數
+       let fruit= Vue.createApp({
+           data:function(){
+               return {
+                    title:'Welcome to Taiwan Fruit Stand',
+                    name:'',
+                    price:0,
+                    qty:0,
+                    isShow:false,
+                    isShow2:false,
+                    isHide:true,
+                    isHide2:false
+               };
+           },
+
+           methods:{
+               show(x,y){
+                    this.isShow=x;
+                    this.isShow2=y;
+               },
+               
+               hide(){
+                   this.isHide=!this.isHide;
+                   this.isHide2=!this.isHide2;
+               },
+               
+               checkout(){
+                   if(this.name!='' && this.price!='' && this.qty!='')
+                    alert(this.name +' , Total:' + this.price*this.qty + '元');
+               }
+           }
+       });
+
+      fruit.mount('#demo');
+</script>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>welcome to Taiwan Fruit Shop</title>
+
+    <style>
+        #demo{
+            width: 100px;
+        }
+        ul li{
+            list-style: none;
+        }
+        img{
+            width:20px;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function(){
+            $('#demo li').hover(
+
+            function(){
+                $(this).prepend('<img src="on.gif" id="light">');
+            },
+            function(){
+                $(this).find('#light').remove();
+            }
+
+            );
+         });
+    </script>
+</head>
+<body>
+    
+    <div id="demo">
+        <h1>Welcome to.......</h1>
+        <ul>
+            <li>草莓</li>
+            <li>櫻桃</li>
+            <li>蘋果</li>
+        </ul>
+    </div>
+</body>
+</html>

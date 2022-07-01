@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>welcome to Taiwan Fruit Shop</title>
+
+    <style>
+        .redFruit{
+            background-image:url('fruit/apple.jpg') ;
+        }
+        .greenFruit{
+            background-image: url('fruit/watermelon.jpg') ;;
+        }
+        .yellowFruit{
+            background-image: url('fruit/banana.jpg') ;;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function(){
+            $('h1').click(function(){
+                $(this).hide();
+            });
+            $('p').click(function(){
+                $(this).hide();
+            });
+            $('#btnShow').click(function(){
+                $('h1').show();
+                $('p').show();
+            });
+            $('#btnHide').click(function(){
+                $('h1').hide();
+                $('p').hide();
+            });
+
+
+            $('.redFruit').mouseenter(function(){
+                $(this).css('color','white');
+                $('.redFruit ul').css('background-color','pink');
+                $('.redFruit ul').css('padding-top','8px');
+                $('.redFruit ul').css('padding-bottom','8px');
+            }).mouseleave(function(){
+                     $(this).css('color','inherit');
+                     //$('.redFruit ul').css('background-color','inherit');
+            });  
+            
+            $('.greenFruit').mouseenter(function(){
+                $(this).css('color','white');
+                $('.greenFruit ul').css({
+                    'background-color':'blue',
+                    'padding-top':'8px'
+                });
+            }).mouseleave(function(){
+                     $(this).css('color','inherit');
+                     //$('.greenFruit ul').css('background-color','inherit');
+            });  
+
+            $('.yellowFruit').mouseenter(function(){
+                var myStyle={
+                    'background-color':'yellow',
+                    'padding-top':'8px'
+                };
+                
+                $(this).css('color','white');
+                $('.yellowFruit ul').css(myStyle);
+            }).mouseleave(function(){
+                     $(this).css('color','inherit');
+                     //$('.yellowFruit ul').css('background-color','inherit');
+            });  
+
+            $('[class *=Fruit ]'). mouseleave(function(){
+                $('[class *=Fruit ] ul').css('background-color','inherit');
+                //$(this).css('background-color','inherit');
+            });
+         });
+    </script>
+</head>
+<body>
+    <h1>welcome to Taiwan Fruit Shop</h1>
+    <hr>
+    <p>
+        水果列表乃是以生物學上的種（含雜交種，如鳳梨釋迦、葡萄柚、香蕉）為基本單位，列舉人類經常生食或加工成果乾、果醬、釀酒等方式利用之植物果實，定義上兼納真果與假果而涵蓋具有柔軟果肉之漿果、柑果、核果、梨果、瓠果等各種類型；且除了全球性的常見水果外，亦包含各大洲地域性的水果在內。
+
+
+            常見水果合照，照片中可見香蕉、西瓜、鳳梨、蘋果、葡萄、西洋梨、柳橙、洋香瓜、芒果、草莓等
+            
+            巴塞隆納市場內的一處水果攤
+            
+            來自巴拿馬巴羅科羅拉多島森林的各種水果
+            下列情形不為本表所收列：
+    </P>
+    <p>
+        水果列表乃是以生物學上的種（含雜交種，如鳳梨釋迦、葡萄柚、香蕉）為基本單位，列舉人類經常生食或加工成果乾、果醬、釀酒等方式利用之植物果實，定義上兼納真果與假果而涵蓋具有柔軟果肉之漿果、柑果、核果、梨果、瓠果等各種類型；且除了全球性的常見水果外，亦包含各大洲地域性的水果在內。
+
+
+            常見水果合照，照片中可見香蕉、西瓜、鳳梨、蘋果、葡萄、西洋梨、柳橙、洋香瓜、芒果、草莓等
+            
+            巴塞隆納市場內的一處水果攤
+            
+            來自巴拿馬巴羅科羅拉多島森林的各種水果
+            下列情形不為本表所收列：
+    </P>
+
+    <div class="redFruit">
+        <h4>紅色水果</h4>
+        <ul>
+            <li>草莓</li>
+            <li>櫻桃</li>
+            <li>蘋果</li>
+        </ul>
+    </div>
+
+    <div class="greenFruit">
+        <h4>綠色水果</h4>
+        <ul>
+            <li>西瓜</li>
+            <li>芭樂</li>
+        </ul>
+    </div>
+
+    <div class="yellowFruit">
+        <h4>綠色水果</h4>
+        <ul>
+            <li>西瓜</li>
+            <li>芭樂</li>
+        </ul>
+    </div>
+
+    <button id="btnShow">SHOW</button>
+    <button id="btnHide">HIDE</button>
+</body>
+</html>

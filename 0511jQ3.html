@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>welcome to Taiwan Fruit Shop</title>
+
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: pink;
+            text-align: center;
+            float: left;
+            margin: 12px;
+            /* display: none; */
+        }
+    </style>
+
+    <script>
+        $(document).ready(function(){
+            $('#down').click(function(){
+                $('#f1').slideDown(400,function(){
+                    $('#p1').html('00000000000');
+                    $('#f1').css('color','blue');
+                });
+                $('#f2').slideDown();
+                $('#f3').slideDown();
+                $('#f4').slideDown();
+            });
+
+            $('#up').click(function(){
+                $('#f1').slideUp();
+                $('#f2').slideUp();
+                $('#f3').slideUp();
+                $('#f4').slideUp();
+            });
+         });
+    </script>
+</head>
+<body>
+    <button id="down">slideDown</button>
+    <button id="up">slideUp</button>
+    <hr>
+
+    <div id="f1">
+        <h1>apple</h1>
+        <p id="p1">
+
+        </p>
+    </div>
+    <div id="f2">
+        <h1>banana</h1>
+        <p id="p2">
+
+        </p>
+    </div>
+    <div id="f3">
+        <h1>cherry</h1>
+        <p id="p3">
+
+        </p>
+    </div>
+    <div id="f4">
+        <h1>mango</h1>
+        <p id="p4">
+
+        </p>
+    </div>
+
+    
+</body>
+</html>

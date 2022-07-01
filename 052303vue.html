@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Custom Component</component></title>
+    <style>
+       
+       input{
+           display: block;
+       }
+        
+    </style>
+</head>
+<body>
+    
+    <div id="demo">
+        <h1>{{title}}</h1>
+        <hr>       
+    
+        <my-form />
+
+    </div>
+    
+    <!-- cdn -->
+    <script src="https://unpkg.com/vue@3"></script>
+    <script>
+        //宣告應用程式物件變數
+       let fruit= Vue.createApp({
+           data:function(){
+               return {
+                    title:'Welcome to Taiwan Fruit Stand',                  
+               };
+           }           
+           
+       });
+
+       fruit.component('my-form',{
+           template:`
+            <div>
+                <!-- 有prevent就不會刷新頁面-->
+                <form @submit.prevent='handleLogin'>
+                    {{subtitle}}
+                <input type='email' placeholder='Email' v-model='Email'/>
+                <input type='password' placeholder='password' v-model='' />
+                <button>LOGIN</button>    
+                </form>
+            </div>
+           `,
+           data(){
+               return{
+               subtitle:'0000000000',
+               Email:'amy@gmail.com',
+               password:'111111'
+            }
+           },
+           methods:{
+               handleLogin(){
+                   alert('LOGIN OK!!');
+                   console.log(this.Email,this.password);
+               }
+           }
+       })
+       fruit.component('your-form',{
+           template:`
+           <label>
+            {{label}}
+           <input type="text"/>
+           </label>
+           `,
+           props:['label']
+
+       })
+
+      fruit.mount('#demo');
+</script>
+
+</body>
+</html>
